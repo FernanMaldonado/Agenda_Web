@@ -1,0 +1,59 @@
+/* Fondo general */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Contenedor del login */
+section {
+    background: white;
+    padding: 30px;
+    width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Título */
+section h3 {
+    text-align: center;
+    margin: 0;
+    color: #333;
+}
+
+/* Inputs */
+section input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+section input:focus {
+    outline: none;
+    border-color: #4e54c8;
+}
+
+/* Botón */
+section button {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #4e54c8;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+section button:hover {
+    background: #3b40a4;
+}
