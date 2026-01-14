@@ -1,15 +1,24 @@
 import { Button } from "./components/common/button/Button.js";
-import { Contactos } from "./components/sections/contactos/Contactos.js";
-
+import { viewContacts, viewNewContacts } from "./components/layout/nav/NavControlers.js";
 let app = document.getElementById("app");
 
 let nav = document.getElementById("nav");
 
 let container = document.getElementById("container");
 
-nav.appendChild(Button("Agenda", "agenda","book.svg"));
-nav.appendChild(Button("Nuevo Contacto", "plus","plus.svg"));
-nav.appendChild(Button("ToDoList","todoList","todolist.svg"));
-nav.appendChild(Button("Crear Tarea","plus","plus.svg"));
-
+nav.appendChild(Button(
+    "Agenda",
+    "agenda",
+    "book.svg",
+viewContacts));
+nav.appendChild(Button(
+    "Nuevo Contacto",
+    "plus",
+    "plus.svg",
+    viewNewContacts
+    ));
+nav.appendChild(Button("ToDoList", "todoList", "todolist.svg"));
+nav.appendChild(Button("Crear Tarea", "plus", "plus.svg"));
+container.innerHTML = "";
 container.appendChild(Contactos());
+// container.appendChild(registro());

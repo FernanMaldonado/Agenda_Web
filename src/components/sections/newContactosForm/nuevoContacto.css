@@ -1,18 +1,7 @@
-/* Fondo general */
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #4e54c8, #8f94fb);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-/* Contenedor del login */
-section {
+/* SOLO el registro */
+.registro {
     background: white;
+    margin: 20px;
     padding: 30px;
     width: 300px;
     border-radius: 12px;
@@ -22,28 +11,28 @@ section {
     gap: 15px;
 }
 
-/* Título */
-section h3 {
+/* Título del registro */
+.registro h3 {
     text-align: center;
     margin: 0;
     color: #333;
 }
 
-/* Inputs */
-section input {
+/* Inputs del registro */
+.registro input {
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #ccc;
     font-size: 14px;
 }
 
-section input:focus {
+.registro input:focus {
     outline: none;
     border-color: #4e54c8;
 }
 
-/* Botón */
-section button {
+/* Botón del registro */
+.registro button {
     padding: 10px;
     border: none;
     border-radius: 6px;
@@ -54,6 +43,6 @@ section button {
     transition: background 0.3s ease;
 }
 
-section button:hover {
+.registro button:hover {
     background: #3b40a4;
 }
