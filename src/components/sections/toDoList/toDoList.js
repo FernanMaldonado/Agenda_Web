@@ -1,5 +1,5 @@
 import { ItemPendiente } from "../../common/itemPendientes/Pendiente.js";
-import { PendienteList } from "./dbPendientes.js";
+import { getHomeworkFromStorage } from "../../../services/storageToDoList.js";
 
 const ordenPrioridad = {
     "Importante": 1,
@@ -15,9 +15,16 @@ let Pendientes = () => {
     h2.textContent = "Pendientes";
     sectionPendientes.appendChild(h2);
 
-    PendienteList
+    // ✅ LEER del storage (NO guardar)
+    let pendientes = getHomeworkFromStorage();
+
+    pendientes
         .slice()
-        .sort((a, b) => ordenPrioridad[a.prioridad] - ordenPrioridad[b.prioridad])
+        .sort(
+            (a, b) =>
+                ordenPrioridad[a.prioridad] -
+                ordenPrioridad[b.prioridad]
+        )
         .forEach((pendiente) => {
             sectionPendientes.appendChild(
                 ItemPendiente(

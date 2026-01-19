@@ -1,15 +1,15 @@
-let LOCAL_STORAGE_KEY = 'agenda_contactos';
+let AgendaContactos = 'agenda_contactos';
 
 function saveContactsToStorage(contactos) {
     localStorage.setItem(
-        LOCAL_STORAGE_KEY,
+        AgendaContactos,
         JSON.stringify(contactos)
     );
 }
 
 function getContactsFromStorage() {
     return JSON.parse(
-        localStorage.getItem(LOCAL_STORAGE_KEY)
+        localStorage.getItem(AgendaContactos)
     ) || [];
 }
 

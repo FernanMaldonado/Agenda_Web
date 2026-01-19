@@ -1,4 +1,7 @@
-import { PendienteList } from "../toDoList/dbPendientes.js";
+import {
+    getHomeworkFromStorage,
+    saveHomeworkToStorage
+} from "../../../services/storageToDoList.js";
 
 let FormTarea = function () {
     let form = document.createElement("form");
@@ -26,12 +29,10 @@ let FormTarea = function () {
 
     selectPrioridad.append(op1, op2, op3);
 
-    // Botón agregar
     let buttonAgregar = document.createElement("button");
     buttonAgregar.type = "submit";
     buttonAgregar.textContent = "Agregar Tarea";
 
-    // Botón cancelar
     let buttonCancelar = document.createElement("button");
     buttonCancelar.type = "button";
     buttonCancelar.textContent = "Cancelar";
@@ -56,8 +57,9 @@ let FormTarea = function () {
             prioridad: selectPrioridad.value
         };
 
-        console.log(tarea);
-        PendienteList.push(tarea);
+        let tareas = getHomeworkFromStorage();
+        tareas.push(tarea);
+        saveHomeworkToStorage(tareas);
 
         form.reset();
     });
