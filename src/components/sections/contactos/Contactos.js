@@ -1,5 +1,6 @@
 import { ItemContacto } from "../../common/itemContacto/itemContacto.js";
 import { ContactList } from "./db.js";
+
 let Contactos = () => {
     let sectionContactos = document.createElement("section");
     sectionContactos.className = "contactos";
@@ -9,11 +10,11 @@ let Contactos = () => {
     sectionContactos.appendChild(h2);
 
     ContactList.forEach((contact) => {
-        sectionContactos.appendChild(ItemContacto("user.svg",
-            contact.nombre,contact.telefono
-        ));
+        sectionContactos.appendChild(
+            ItemContacto(contact) // 👈 AQUÍ ESTABA TODO EL PROBLEMA
+        );
     });
-    
+
     return sectionContactos;
 };
 

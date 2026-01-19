@@ -2,26 +2,25 @@ let login = function () {
     let login = document.createElement("section");
 
     let h3 = document.createElement("h3");
-    h3.innerHTML = "Login";
+    h3.textContent = "Login";
 
     let user = document.createElement("input");
     user.type = "text";
-    user.placeholder  = "Usuario";
+    user.placeholder = "Usuario";
 
     let password = document.createElement("input");
-    password.type = "text";
-    password.placeholder  = "Password";
+    password.type = "password";
+    password.placeholder = "Password";
 
     let button = document.createElement("button");
-    button.innerHTML = "Iniciar Sesion";
+    button.textContent = "Iniciar Sesión";
 
-    login.appendChild(h3);
-    login.appendChild(user);
-    login.appendChild(password);
-    login.appendChild(button);
+    button.addEventListener("click", () => {
+        window.location.href = "./src/app.html";
+    });
 
+    login.append(h3, user, password, button);
     return login;
+};
 
-}
-
-export {login};
+export { login };

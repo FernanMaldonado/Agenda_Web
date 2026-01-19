@@ -1,25 +1,31 @@
-let Button = (title, id,img, callback) => {
-    let div = document.createElement("div");
-    div.className = "button";
-    div.id = id ;
+let Button = (title, id, img, callback) => {
+  let div = document.createElement("div");
+  div.className = "button";
+  div.id = id;
 
-    let divImage = document.createElement("div");
-    divImage.className = "button-image";
+  let divImage = document.createElement("div");
+  divImage.className = "button-image";
 
-    let imgIcon = document.createElement("img");
-    imgIcon.src = `./assets/icons/${img}`;
-    imgIcon.alt = title;
-    divImage.appendChild(imgIcon);
+  let imgIcon = document.createElement("img");
+  imgIcon.src = `./assets/icons/${img}`;
+  imgIcon.alt = title;
+  divImage.appendChild(imgIcon);
 
-      let p = document.createElement("p");
-    p.className = "button-text";
-    p.textContent = title;
+  let p = document.createElement("p");
+  p.className = "button-text";
+  p.textContent = title;
 
-    div.appendChild(divImage);
-    div.appendChild(p);
+  div.appendChild(divImage);
+  div.appendChild(p);
 
-    div.addEventListener("click", () => {callback(); console.log("Seccion completada");});
-    return div;
+  div.addEventListener("click", () => {
+    if (typeof callback === "function") {
+      callback();
+      console.log("Seccion completada");
+    }
+  });
+
+  return div;
 }
 
-export {Button};
+export { Button };

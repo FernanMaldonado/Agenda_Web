@@ -5,7 +5,31 @@
     border-radius: 1rem;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 1rem;
     padding: 1rem;
+    align-items: center;
+}
+
+.fav-label {
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.fav-label input {
+    display: none;
+}
+
+.star {
+    font-size: 22px;
+    color: #ccc;
+}
+
+.fav-label input:checked + .star {
+    color: gold;
+}
+
+.star::before {
+    content: "★";
+    font-size: 2.5rem;
 }

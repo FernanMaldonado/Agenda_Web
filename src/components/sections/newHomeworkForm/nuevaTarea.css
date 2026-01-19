@@ -1,0 +1,51 @@
+/* SOLO el formulario de tareas */
+.form-tarea {
+    background: white;
+    margin: 20px;
+    padding: 30px;
+    width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Inputs y select */
+.form-tarea input,
+.form-tarea select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+/* Focus */
+.form-tarea input:focus,
+.form-tarea select:focus {
+    outline: none;
+    border-color: #4e54c8;
+}
+
+/* Select */
+.form-tarea select {
+    background: white;
+    cursor: pointer;
+}
+
+/* Botón */
+.form-tarea button {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background: #4e54c8;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Hover botón */
+.form-tarea button:hover {
+    background: #3b40a4;
+}
