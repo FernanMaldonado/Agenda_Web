@@ -15,8 +15,14 @@ let Pendientes = () => {
     h2.textContent = "Pendientes";
     sectionPendientes.appendChild(h2);
 
-    // ✅ LEER del storage (NO guardar)
     let pendientes = getHomeworkFromStorage();
+
+    if (pendientes.length === 0) {
+        let p = document.createElement("p");
+        p.textContent = "No hay tareas asignadas";
+        sectionPendientes.appendChild(p);
+        return sectionPendientes;
+    }
 
     pendientes
         .slice()
@@ -31,7 +37,8 @@ let Pendientes = () => {
                     "todolist.svg",
                     pendiente.nombre,
                     pendiente.descripcion,
-                    pendiente.prioridad
+                    pendiente.prioridad,
+                    pendiente.fechaLimite
                 )
             );
         });
