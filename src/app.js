@@ -38,4 +38,18 @@ nav.appendChild(Button(
 
 
 // Vista inicial
-viewContacts();
+// viewContacts();
+
+async function tareas() {
+    try {
+        let data = await fetch("https://jsonplaceholder.typicode.com/posts");
+        let r = await data.json();
+        console.log(r);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+tareas();
+
+console.log("Completado");

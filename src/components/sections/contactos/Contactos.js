@@ -13,7 +13,8 @@ let Contactos = () => {
 
     contactos.forEach((contact) => {
         sectionContactos.appendChild(
-            ItemContacto(contact)
+
+            ItemContacto(contact);
         );
     });
 
