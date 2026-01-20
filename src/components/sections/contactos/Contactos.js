@@ -11,7 +11,7 @@ let Contactos = () => {
 
     ContactList.forEach((contact) => {
         sectionContactos.appendChild(
-            ItemContacto(contact) // 👈 AQUÍ ESTABA TODO EL PROBLEMA
+            ItemContacto(contact) 
         );
     });
 

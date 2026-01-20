@@ -26,12 +26,10 @@ let FormTarea = function () {
 
     selectPrioridad.append(op1, op2, op3);
 
-    // Botón agregar
     let buttonAgregar = document.createElement("button");
     buttonAgregar.type = "submit";
     buttonAgregar.textContent = "Agregar Tarea";
 
-    // Botón cancelar
     let buttonCancelar = document.createElement("button");
     buttonCancelar.type = "button";
     buttonCancelar.textContent = "Cancelar";
