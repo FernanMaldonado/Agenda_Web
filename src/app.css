@@ -15,20 +15,23 @@
 #nav {
   height: 100vh;
   border: 1px solid black;
+  background-image: linear-gradient(rgb(176, 235, 227), rgb(154, 154, 189));
 }
+
 #container {
   height: 100vh;
+  background-image : linear-gradient(rgb(146, 187, 149),rgb(102, 102, 177));
   border: 1px solid black;
 }
 
 @media (max-width: 1000px) {
   #app {
-    grid-template-columns: 200px 1fr;
+    grid-template-columns: 100px 1fr;
   }
 }
 
 @media (max-width: 600px) {
   #app {
-    grid-template-columns: 120px 1fr;
+    grid-template-columns: 80px 1fr;
   }
 }

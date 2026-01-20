@@ -1,5 +1,5 @@
 import { ItemPendiente } from "../../common/itemPendientes/Pendiente.js";
-import { PendienteList } from "./dbPendientes.js";
+import { getHomeworkFromStorage } from "../../../services/storageToDoList.js";
 
 const ordenPrioridad = {
     "Importante": 1,
@@ -15,16 +15,30 @@ let Pendientes = () => {
     h2.textContent = "Pendientes";
     sectionPendientes.appendChild(h2);
 
-    PendienteList
+    let pendientes = getHomeworkFromStorage();
+
+    if (pendientes.length === 0) {
+        let p = document.createElement("p");
+        p.textContent = "No hay tareas asignadas";
+        sectionPendientes.appendChild(p);
+        return sectionPendientes;
+    }
+
+    pendientes
         .slice()
-        .sort((a, b) => ordenPrioridad[a.prioridad] - ordenPrioridad[b.prioridad])
+        .sort(
+            (a, b) =>
+                ordenPrioridad[a.prioridad] -
+                ordenPrioridad[b.prioridad]
+        )
         .forEach((pendiente) => {
             sectionPendientes.appendChild(
                 ItemPendiente(
                     "todolist.svg",
                     pendiente.nombre,
                     pendiente.descripcion,
-                    pendiente.prioridad
+                    pendiente.prioridad,
+                    pendiente.fechaLimite
                 )
             );
         });

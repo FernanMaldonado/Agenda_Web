@@ -1,4 +1,8 @@
-import { PendienteList } from "../toDoList/dbPendientes.js";
+import {
+    getHomeworkFromStorage,
+    saveHomeworkToStorage
+} from "../../../services/storageToDoList.js";
+import { viewContacts, viewToDoList } from "../../layout/nav/NavControlers.js";
 
 let FormTarea = function () {
     let form = document.createElement("form");
@@ -16,6 +20,11 @@ let FormTarea = function () {
     inputDescripcion.type = "text";
     inputDescripcion.placeholder = "Descripción";
     inputDescripcion.required = true;
+
+      let inputFechaLimite = document.createElement("input");
+    inputFechaLimite.type = "date";
+    inputFechaLimite.placeholder = "dd/mm/cccc";
+    inputFechaLimite.required = true;
 
     let selectPrioridad = document.createElement("select");
     selectPrioridad.required = true;
@@ -41,6 +50,7 @@ let FormTarea = function () {
         inputNombre,
         inputDescripcion,
         selectPrioridad,
+        inputFechaLimite,
         buttonAgregar,
         buttonCancelar
     );
@@ -51,12 +61,14 @@ let FormTarea = function () {
         let tarea = {
             nombre: inputNombre.value,
             descripcion: inputDescripcion.value,
-            prioridad: selectPrioridad.value
+            prioridad: selectPrioridad.value,
+            fechaLimite : inputFechaLimite.value
         };
 
-        console.log(tarea);
-        PendienteList.push(tarea);
-
+        let tareas = getHomeworkFromStorage();
+        tareas.push(tarea);
+        saveHomeworkToStorage(tareas);
+        location.reload();
         form.reset();
     });
 

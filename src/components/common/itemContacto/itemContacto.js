@@ -1,4 +1,8 @@
 import { detalleContactos } from "../../sections/detalleContactos/DetalleContacto.js";
+import {
+    getContactsFromStorage,
+    saveContactsToStorage
+} from "../../../services/storage.js";
 
 let ItemContacto = (contacto) => {
     let div = document.createElement("div");
@@ -22,8 +26,6 @@ let ItemContacto = (contacto) => {
     favInput.type = "checkbox";
     favInput.checked = contacto.favorito === true;
 
-
-
     let star = document.createElement("span");
     star.className = "star";
 
@@ -33,11 +35,20 @@ let ItemContacto = (contacto) => {
     });
 
     favInput.addEventListener("change", () => {
-        contacto.favorito = favInput.checked;
-        console.log("Favorito:", contacto.nombre, contacto.favorito);
-    });
+        let contactos = getContactsFromStorage();
 
-    
+        contactos = contactos.map(c => {
+            if (c.telefono === contacto.telefono) {
+                return {
+                    ...c,
+                    favorito: favInput.checked
+                };
+            }
+            return c;
+        });
+
+        saveContactsToStorage(contactos);
+    });
 
     div.addEventListener("click", () => {
         document.body.appendChild(detalleContactos(contacto));

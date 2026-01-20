@@ -1,5 +1,5 @@
 import { ItemContacto } from "../../common/itemContacto/itemContacto.js";
-import { ContactList } from "./db.js";
+import { getContactsFromStorage } from "../../../services/storage.js";
 
 let Contactos = () => {
     let sectionContactos = document.createElement("section");
@@ -9,9 +9,12 @@ let Contactos = () => {
     h2.textContent = "Contactos";
     sectionContactos.appendChild(h2);
 
-    ContactList.forEach((contact) => {
+    let contactos = getContactsFromStorage();
+
+    contactos.forEach((contact) => {
         sectionContactos.appendChild(
-            ItemContacto(contact) 
+
+            ItemContacto(contact);
         );
     });
 

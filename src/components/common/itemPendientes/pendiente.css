@@ -1,11 +1,41 @@
 .item-pendiente {
     font-family: monospace;
     font-size: 1rem;
-    border: 1px solid #ccc;
+    background-color: #9b9b9b;
+    border: 2px solid #ccc;
     border-radius: 1rem;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 1rem;
     padding: 1rem;
+}
+
+
+.deleteButton {
+    height: 100%;
+    max-height: 3rem;
+    width: 100%;
+    max-width: 3rem;
+    border-radius: 100%;
+}
+
+.deleteButton:hover {
+    background-color: red;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.deleteButton::before {
+    font-size: 1.5rem;
+    content: "🗑";
+}
+
+@media ( max-width:1000px) {
+    .deleteButton {
+    height: 100%;
+    width: 100%;
+    max-height: 2.5rem;
+    max-width: 2.5rem;
+}
 }
