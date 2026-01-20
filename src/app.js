@@ -38,7 +38,7 @@ nav.appendChild(Button(
 
 
 // Vista inicial
-// viewContacts();
+viewContacts();
 
 async function tareas() {
     try {
