@@ -14,7 +14,6 @@ function getHomeworkFromStorage() {
     if (!tarea) {
         return [];
     }
-
     try {
         return JSON.parse(tarea);
     } catch {

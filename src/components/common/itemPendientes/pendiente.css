@@ -6,7 +6,7 @@
     border-radius: 1rem;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 1rem;
     padding: 1rem;
 }
@@ -31,11 +31,40 @@
     content: "🗑";
 }
 
-@media ( max-width:1000px) {
-    .deleteButton {
+
+.editButton {
     height: 100%;
+    max-height: 3.5rem;
     width: 100%;
-    max-height: 2.5rem;
-    max-width: 2.5rem;
+    max-width: 3.5rem;
+    border-radius: 100%;
 }
+
+.editButton:hover {
+    background-color: rgb(238, 255, 0);
+    cursor: pointer;
+    color: #000000;
+}
+
+.editButton::before {
+    font-size: 1rem;
+    content: "📝";
+}
+
+@media (max-width: 600px) {
+
+  .item-pendiente {
+    grid-template-columns: 1fr; /* una sola columna */
+    gap: 0.5rem;
+    width: 95%;
+  }
+
+  .editButton,
+  .deleteButton {
+    max-width: 50px;
+    height: 50px;
+    max-height: 2.5rem;
+    width: 100%;
+    border-radius: 0.7rem;
+  }
 }

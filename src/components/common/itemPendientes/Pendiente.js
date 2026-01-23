@@ -1,7 +1,7 @@
 import { deleteHomework } from "../../../services/storageToDoList.js";
-import { viewContacts, viewToDoList } from "../../layout/nav/NavControlers.js";
+import { viewNewHomework } from "../../layout/nav/NavControlers.js";
 
-let ItemPendiente = (imgPendiente, nombre, descripcion, prioridad,fecha) => {
+let ItemPendiente = (imgPendiente, nombre, descripcion, prioridad, fecha,index) => {
     let div = document.createElement("div");
     div.className = "item-pendiente";
 
@@ -14,7 +14,7 @@ let ItemPendiente = (imgPendiente, nombre, descripcion, prioridad,fecha) => {
     let pDescripcion = document.createElement("p");
     pDescripcion.textContent = descripcion;
 
-     let fechaLimite = document.createElement("p");
+    let fechaLimite = document.createElement("p");
     fechaLimite.textContent = fecha;
 
     let pPrioridad = document.createElement("p");
@@ -24,17 +24,28 @@ let ItemPendiente = (imgPendiente, nombre, descripcion, prioridad,fecha) => {
     deleteButton.type = "button";
     deleteButton.className = "deleteButton"
 
+    let editButton = document.createElement("button");
+    editButton.className = "editButton";
+
     deleteButton.addEventListener("click", () => {
         deleteHomework(nombre);
-         location.reload();
+        location.reload();
     });
+
+    editButton.addEventListener("click", () => {
+        localStorage.setItem("editIndex", index);
+        viewNewHomework();
+    });
+
+
 
     div.appendChild(etiquetaImg);
     div.appendChild(pNombre);
     div.appendChild(pDescripcion);
     div.appendChild(pPrioridad);
-     div.appendChild(fechaLimite);
+    div.appendChild(fechaLimite);
     div.appendChild(deleteButton);
+    div.appendChild(editButton);
 
     return div;
 };

@@ -2,7 +2,7 @@ import {
     getHomeworkFromStorage,
     saveHomeworkToStorage
 } from "../../../services/storageToDoList.js";
-import { viewContacts, viewToDoList } from "../../layout/nav/NavControlers.js";
+import { viewToDoList } from "../../layout/nav/NavControlers.js";
 
 let FormTarea = function () {
     let form = document.createElement("form");
@@ -21,11 +21,6 @@ let FormTarea = function () {
     inputDescripcion.placeholder = "Descripción";
     inputDescripcion.required = true;
 
-      let inputFechaLimite = document.createElement("input");
-    inputFechaLimite.type = "date";
-    inputFechaLimite.placeholder = "dd/mm/cccc";
-    inputFechaLimite.required = true;
-
     let selectPrioridad = document.createElement("select");
     selectPrioridad.required = true;
 
@@ -34,6 +29,10 @@ let FormTarea = function () {
     let op3 = new Option("Puede esperar", "Puede esperar");
 
     selectPrioridad.append(op1, op2, op3);
+
+    let inputFechaLimite = document.createElement("input");
+    inputFechaLimite.type = "date";
+    inputFechaLimite.required = true;
 
     let buttonAgregar = document.createElement("button");
     buttonAgregar.type = "submit";
@@ -55,6 +54,21 @@ let FormTarea = function () {
         buttonCancelar
     );
 
+    let editIndex = localStorage.getItem("editIndex");
+    let tareas = getHomeworkFromStorage();
+
+    if (editIndex !== null) {
+        let tarea = tareas[editIndex];
+
+        h3.textContent = "Editar Tarea";
+        buttonAgregar.textContent = "Guardar Cambios";
+
+        inputNombre.value = tarea.nombre;
+        inputDescripcion.value = tarea.descripcion;
+        selectPrioridad.value = tarea.prioridad;
+        inputFechaLimite.value = tarea.fechaLimite;
+    }
+
     form.addEventListener("submit", (e) => {
         e.preventDefault();
 
@@ -62,14 +76,25 @@ let FormTarea = function () {
             nombre: inputNombre.value,
             descripcion: inputDescripcion.value,
             prioridad: selectPrioridad.value,
-            fechaLimite : inputFechaLimite.value
+            fechaLimite: inputFechaLimite.value
         };
 
         let tareas = getHomeworkFromStorage();
-        tareas.push(tarea);
+
+        if (editIndex !== null) {
+            tareas[editIndex] = tarea; // editar
+            localStorage.removeItem("editIndex");
+        } else {
+            tareas.push(tarea); // creaer
+        }
+
         saveHomeworkToStorage(tareas);
         location.reload();
-        form.reset();
+    });
+
+    buttonCancelar.addEventListener("click", () => {
+        localStorage.removeItem("editIndex");
+        viewToDoList();
     });
 
     return form;

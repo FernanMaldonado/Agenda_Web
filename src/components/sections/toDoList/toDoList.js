@@ -1,3 +1,8 @@
+let titulo = document.getElementById("titulo");
+let descripcion = document.getElementById("descripcion");
+let prioridad = document.getElementById("prioridad");
+let fecha = document.getElementById("fecha");
+
 import { ItemPendiente } from "../../common/itemPendientes/Pendiente.js";
 import { getHomeworkFromStorage } from "../../../services/storageToDoList.js";
 
@@ -23,7 +28,6 @@ let Pendientes = () => {
         sectionPendientes.appendChild(p);
         return sectionPendientes;
     }
-
     pendientes
         .slice()
         .sort(
@@ -31,17 +35,19 @@ let Pendientes = () => {
                 ordenPrioridad[a.prioridad] -
                 ordenPrioridad[b.prioridad]
         )
-        .forEach((pendiente) => {
+        .forEach((pendiente, index) => {
             sectionPendientes.appendChild(
                 ItemPendiente(
                     "todolist.svg",
                     pendiente.nombre,
                     pendiente.descripcion,
                     pendiente.prioridad,
-                    pendiente.fechaLimite
+                    pendiente.fechaLimite,
+                    index
                 )
             );
         });
+
 
     return sectionPendientes;
 };
